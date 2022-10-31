@@ -1,8 +1,11 @@
 package com.example.springboothospitalapi.parser;
 
 import com.example.springboothospitalapi.domain.Hospital;
+록import org.apache.catalina.core.ApplicationContext;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -10,8 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@SpringBootTest
 class HospitalParserTest {
+
+    @Autowired
+    Read<Hospital> hospitalReadContext;
+
+    @Test
+    void read() throws IOException {
+        String fileName = "/Users/ahnjy/Downloads/fulldata_01_01_02_P_의원.csv";
+        List<Hospital> hospitalList = hospitalReadContext.readLines(fileName);
+        assertTrue(hospitalList.size() > 1000);
+        assertTrue(hospitalList.size() > 10000);
+    }
+
     @Test
     @DisplayName("csv 한줄을 hospital로 만드는 test")
     void convertToHospital() {
@@ -36,4 +51,5 @@ class HospitalParserTest {
         assertEquals(0, hospital.getTotalNumberOfBeds()); //col:32
 
     }
+
 }
