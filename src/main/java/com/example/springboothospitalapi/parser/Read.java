@@ -22,14 +22,20 @@ public class Read<T> {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         List<T> myList = new ArrayList<>();
         String line;
-
+        int exception_count = 0;
         if(removeColumnName){
             br.readLine();
         }
         while ((line = br.readLine()) != null) {
-            T tmp = parse.parse(line);
-            myList.add(tmp);
+            try {
+                T tmp = parse.parse(line);
+                myList.add(tmp);
+            } catch (Exception e) {
+                exception_count ++;
+            }
         }
+        System.out.println("파싱 문제 건수 : " + exception_count);
+        br.close();
         return myList;
     }
 }
