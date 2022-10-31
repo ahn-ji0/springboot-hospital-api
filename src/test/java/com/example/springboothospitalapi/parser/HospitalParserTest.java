@@ -17,12 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class HospitalParserTest {
 
     @Autowired
-    Read<Hospital> hospitalReadContext;
+    Read<Hospital> hospitalRead;
 
     @Test
     void read() throws IOException {
         String fileName = "/Users/ahnjy/Downloads/fulldata_01_01_02_P_의원.csv";
-        List<Hospital> hospitalList = hospitalReadContext.readLines(fileName);
+        List<Hospital> hospitalList = hospitalRead.readLines(fileName);
         assertTrue(hospitalList.size() > 1000);
         assertTrue(hospitalList.size() > 10000);
     }
