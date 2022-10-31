@@ -3,11 +3,13 @@ package com.example.springboothospitalapi.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Getter
+@Setter
 @NoArgsConstructor
 public class Hospital {
     private int id;
