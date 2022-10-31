@@ -1,7 +1,7 @@
 package com.example.springboothospitalapi.parser;
 
 import com.example.springboothospitalapi.domain.Hospital;
-록import org.apache.catalina.core.ApplicationContext;
+import org.apache.catalina.core.ApplicationContext;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
