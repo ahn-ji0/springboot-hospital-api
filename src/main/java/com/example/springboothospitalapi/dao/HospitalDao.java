@@ -5,6 +5,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+
 @Component
 public class HospitalDao {
     private final JdbcTemplate jdbcTemplate;
@@ -12,6 +16,18 @@ public class HospitalDao {
     public HospitalDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+    RowMapper<Hospital> rowMapper = new RowMapper<Hospital>() {
+        @Override
+        public Hospital mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+            return new Hospital(rs.getInt("id"),rs.getString("open_service_name"),rs.getInt("open_local_government_code"),
+                    rs.getString("management_number"),rs.getObject("license_date", LocalDateTime.class),rs.getInt("business_status"),
+                    rs.getInt("business_status_code"),rs.getString("phone"),rs.getString("full_address"),
+                    rs.getString("road_name_address"),rs.getString("hospital_name"),rs.getString("business_type_name"),
+                    rs.getInt("healthcare_provider_count"),rs.getInt("patient_room_count"),rs.getInt("total_number_of_beds"));
+        }
+    };
+
     public int add(Hospital hospital){
         String sql = "INSERT INTO hospital(id,open_service_name,open_local_government_code," +
                 "management_number, license_date, business_status," +
@@ -35,4 +51,10 @@ public class HospitalDao {
         String sql = "SELECT count(*) FROM hospital";
         return this.jdbcTemplate.queryForObject(sql,Integer.class);
     }
+
+    public Hospital getById(int id){
+        String sql = "SELECT * FROM hospital WHERE id = ?";
+        return this.jdbcTemplate.queryForObject(sql,rowMapper,id);
+    }
+
 }
