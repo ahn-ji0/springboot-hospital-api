@@ -37,8 +37,21 @@ class HospitalParserTest {
         assertEquals(1,hospitalDao.getCount());
 
         Hospital selectedHospital = hospitalDao.getById(hospital.getId());
+        assertEquals(selectedHospital.getId(),hospital.getId());
+        assertEquals(selectedHospital.getOpenServiceName(),hospital.getOpenServiceName());
+        assertEquals(selectedHospital.getOpenLocalGovernmentCode(),hospital.getOpenLocalGovernmentCode());
+        assertEquals(selectedHospital.getManagementNumber(),hospital.getManagementNumber());
+        assertTrue(selectedHospital.getLicenseDate().isEqual(hospital.getLicenseDate()));
+        assertEquals(selectedHospital.getBusinessStatus(),hospital.getBusinessStatus());
+        assertEquals(selectedHospital.getBusinessStatusCode(),hospital.getBusinessStatusCode());
+        assertEquals(selectedHospital.getPhone(),hospital.getPhone());
+        assertEquals(selectedHospital.getFullAddress(),hospital.getFullAddress());
+        assertEquals(selectedHospital.getRoadNameAddress(),hospital.getRoadNameAddress());
         assertEquals(selectedHospital.getHospitalName(),hospital.getHospitalName());
-
+        assertEquals(selectedHospital.getBusinessTypeName(),hospital.getBusinessTypeName());
+        assertEquals(selectedHospital.getHealthcareProviderCount(),hospital.getHealthcareProviderCount());
+        assertEquals(selectedHospital.getPatientRoomCount(),hospital.getPatientRoomCount());
+        assertEquals(selectedHospital.getTotalNumberOfBeds(),hospital.getTotalNumberOfBeds());
     }
     @Test
     void readTenThousand() throws IOException {
