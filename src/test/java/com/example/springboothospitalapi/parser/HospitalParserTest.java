@@ -28,9 +28,17 @@ class HospitalParserTest {
     @Test
     @DisplayName("db에 한줄 add하기")
     void readAdd(){
+        hospitalDao.deleteAll();
+        assertEquals(0,hospitalDao.getCount());
+
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse(line1);
         hospitalDao.add(hospital);
+        assertEquals(1,hospitalDao.getCount());
+
+        Hospital selectedHospital = hospitalDao.getById(hospital.getId());
+        assertEquals(selectedHospital.getHospitalName(),hospital.getHospitalName());
+
     }
     @Test
     void readTenThousand() throws IOException {
