@@ -30,4 +30,9 @@ public class HospitalDao {
     public int deleteAll(){
         return this.jdbcTemplate.update("DELETE FROM hospital");
     }
+
+    public int getCount(){
+        String sql = "SELECT count(*) FROM hospital";
+        return this.jdbcTemplate.queryForObject(sql,Integer.class);
+    }
 }
