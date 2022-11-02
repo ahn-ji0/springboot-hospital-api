@@ -36,7 +36,8 @@ public class HospitalController {
                 hospitalRequestDto.getBusinessTypeName(),
                 hospitalRequestDto.getHealthcareProviderCount(),
                 hospitalRequestDto.getPatientRoomCount(),
-                hospitalRequestDto.getTotalNumberOfBeds());
+                hospitalRequestDto.getTotalNumberOfBeds(),
+                hospitalRequestDto.getTotalAreaSize());
         return ResponseEntity.ok().body(hospitalDao.add(hospital));
     }
 

@@ -31,6 +31,7 @@ public class HospitalParser implements Parser<Hospital> {
         hospital.setHealthcareProviderCount(Integer.parseInt(arr[29]));
         hospital.setPatientRoomCount(Integer.parseInt(arr[30]));
         hospital.setTotalNumberOfBeds(Integer.parseInt(arr[31]));
+        hospital.setTotalAreaSize(Float.parseFloat(arr[32]));
 
         return hospital;
     }

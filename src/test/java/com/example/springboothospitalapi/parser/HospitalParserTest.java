@@ -52,6 +52,7 @@ class HospitalParserTest {
         assertEquals(selectedHospital.getHealthcareProviderCount(),hospital.getHealthcareProviderCount());
         assertEquals(selectedHospital.getPatientRoomCount(),hospital.getPatientRoomCount());
         assertEquals(selectedHospital.getTotalNumberOfBeds(),hospital.getTotalNumberOfBeds());
+        assertEquals(selectedHospital.getTotalAreaSize(),hospital.getTotalAreaSize());
     }
     @Test
     void readTenThousand() throws IOException {
@@ -79,9 +80,9 @@ class HospitalParserTest {
         assertEquals("광주광역시 북구 동문대로 24, 3층 (풍향동)", hospital.getRoadNameAddress());//col:19
         assertEquals("효치과의원", hospital.getHospitalName());//col:21
         assertEquals("치과의원", hospital.getBusinessTypeName());//col:25
-        assertEquals(1, hospital.getHealthcareProviderCount()); //col:30
-        assertEquals(0, hospital.getPatientRoomCount()); //col:31
-        assertEquals(0, hospital.getTotalNumberOfBeds()); //col:32
+        assertEquals(1, hospital.getHealthcareProviderCount()); //col:29
+        assertEquals(0, hospital.getPatientRoomCount()); //col:30
+        assertEquals(0, hospital.getTotalNumberOfBeds()); //col:31
 
     }
 

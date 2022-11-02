@@ -24,7 +24,8 @@ public class HospitalDao {
                     rs.getString("management_number"),rs.getObject("license_date", LocalDateTime.class),rs.getInt("business_status"),
                     rs.getInt("business_status_code"),rs.getString("phone"),rs.getString("full_address"),
                     rs.getString("road_name_address"),rs.getString("hospital_name"),rs.getString("business_type_name"),
-                    rs.getInt("healthcare_provider_count"),rs.getInt("patient_room_count"),rs.getInt("total_number_of_beds"));
+                    rs.getInt("healthcare_provider_count"),rs.getInt("patient_room_count"),rs.getInt("total_number_of_beds"),
+                    rs.getFloat("total_area_size"));
         }
     };
 
@@ -33,14 +34,16 @@ public class HospitalDao {
                 "management_number, license_date, business_status," +
                 "business_status_code, phone,full_address," +
                 "road_name_address,hospital_name,business_type_name," +
-                "healthcare_provider_count,patient_room_count,total_number_of_beds)" +
-                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "healthcare_provider_count,patient_room_count,total_number_of_beds," +
+                "total_area_size)" +
+                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         return this.jdbcTemplate.update(sql,
                 hospital.getId(), hospital.getOpenServiceName(), hospital.getOpenLocalGovernmentCode(),
                 hospital.getManagementNumber(), hospital.getLicenseDate(), hospital.getBusinessStatus(),
                 hospital.getBusinessStatusCode(), hospital.getPhone(), hospital.getFullAddress(),
                 hospital.getRoadNameAddress(), hospital.getHospitalName(), hospital.getBusinessTypeName(),
-                hospital.getHealthcareProviderCount(), hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds()
+                hospital.getHealthcareProviderCount(), hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds(),
+                hospital.getTotalAreaSize()
         );
     }
     public int deleteAll(){

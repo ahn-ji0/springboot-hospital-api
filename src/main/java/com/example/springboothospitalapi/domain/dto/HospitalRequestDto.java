@@ -24,5 +24,6 @@ public class HospitalRequestDto {
     private int healthcareProviderCount;
     private int patientRoomCount;
     private int totalNumberOfBeds;
+    private float totalAreaSize;
 
 }
