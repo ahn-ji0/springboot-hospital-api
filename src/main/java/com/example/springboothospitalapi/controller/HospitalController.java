@@ -5,8 +5,11 @@ import com.example.springboothospitalapi.domain.Hospital;
 import com.example.springboothospitalapi.domain.dto.HospitalRequestDto;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -51,5 +54,18 @@ public class HospitalController {
     @GetMapping(value="/hospital/count")
     public ResponseEntity<Integer> getCount(){
         return ResponseEntity.ok().body(hospitalDao.getCount());
+    }
+
+    @ApiOperation(value="hospital get by Id",notes="특정 id의 hospital 불러오기")
+    @GetMapping(value="/hospital/{id}")
+    public ResponseEntity<Hospital> getId(@PathVariable int id){
+        Hospital hospital = hospitalDao.getById(id);
+        Optional<Hospital> opt = Optional.of(hospital);
+        if(!opt.isEmpty()){
+            return ResponseEntity.ok().body(hospital);
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Hospital());
+        }
     }
 }
