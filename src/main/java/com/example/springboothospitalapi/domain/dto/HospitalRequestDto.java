@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 public class HospitalRequestDto {
+
     private int id;
     private String openServiceName;
     private int openLocalGovernmentCode;
@@ -23,4 +24,5 @@ public class HospitalRequestDto {
     private int healthcareProviderCount;
     private int patientRoomCount;
     private int totalNumberOfBeds;
+
 }
